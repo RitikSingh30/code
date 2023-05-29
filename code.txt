@@ -1,3 +1,103 @@
+Assignment 1 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = pd.read_csv("..\\Downloads\\iris.csv")
+
+print(data)
+data.head()
+a = data.sample(10)
+print(a)
+
+print("max value sepal length ", data['sepal_length'].max())
+
+data.fillna(0, inplace=True)
+print("no null value sepal width", data['sepal_length'])
+print("***********")
+print(data.describe())
+specific_data = data[["sepal_length", "sepal_length"]]
+print("specified data", specific_data)
+print("statistic calculation")
+sum_data = data["sepal_length"].sum()
+mean_data = data["sepal_length"].mean()
+median_data = data["sepal_length"].median()
+
+print("Sum:", sum_data, "\nmean:", mean_data, "\nmedian :", median_data)
+
+data.describe()
+data.info()
+plt.figure(figsize=(151, 5))
+x = data["sepal_length"]
+
+plt.hist(x, bins=20, color="green")
+plt.title("Sepal Length in cm")
+plt.xlabel("sepal_length")
+plt.ylabel("Count")
+plt.show()
+
+
+Assignment 2
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# assigning the data
+data = {'Name': ['Adi', 'Deeksha', 'Jincy', 'Keerthi', 'Harish', 'Anu', 'Ram'],
+        'Age': [17, 17, 18, 17, 18, 17, 17],
+        'Gender': ['M', 'F', 'F', 'F', 'M', 'F', 'M'],
+        'Marks': [90, 76, 'NAN', 74, 65, 'NAN', 71]}
+# converting into the dataframes
+df = pd.DataFrame(data)
+# displaying the data
+print(df)
+# replacing the missing values
+df = df.replace(to_replace="NAN", value=30)
+# displaying the data
+print(df)
+print("RESHAPING THE DATA")
+# Categorize the gender
+df['Gender'] = df['Gender'].map({'M': 0, 'F': 1, }).astype(float)
+# displaying the data
+print(df)
+# filter top scoring students
+print("FILTERING THE DATA")
+df = df[df['Marks'] >= 75]
+# remove age row
+df = df.drop(['Age'], axis=1)
+# displaying the data
+print("filter", df)
+print("outlier with skewness")
+print(df['Marks'].skew())
+print(df['Marks'].describe())
+print("GRAPTH")
+plt.boxplot(df["Marks"])
+plt.show()
+
+
+
+Assignment 3
+
+import statistics
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv("C:\\Users\\Bhavika\\Downloads\\emp.csv")
+data2 = np.array([7, 5, 4, 9, 12, 45])
+print("Sum: ", data["EmployeeNumber"].sum())
+print("Mean: ", data["EmployeeNumber"].mean())
+print("Maximum: ", data["EmployeeNumber"].max())
+print("Minimum: ", data["EmployeeNumber"].min())
+print("Standard deviation: ", statistics.stdev(data["EmployeeNumber"]))
+
+print("Standard Deviation of the sample is % s " % (statistics.stdev(data2)))
+print("Mean of the sample is % s " % (statistics.mean(data2)))
+0
+
+
+
 Assignment 4
 
 import numpy as np
